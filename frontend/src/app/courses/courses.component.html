@@ -1,0 +1,29 @@
+<h1>{{ coursesTitle }}</h1>
+
+<div *ngIf="loggedIn && user">
+  <h3>Profile</h3>
+
+
+  <p><u>Name:</u> {{ user.firstName }} {{ user.lastName }}</p>
+  <p><u>Email:</u> {{ user.email }}</p>
+  <p><u>Phone:</u> {{ user.phone }}</p>
+
+  <hr>
+
+  <h3>Courses</h3>
+
+  <div *ngIf="!admin">
+    <ul>
+      <li *ngFor="let course of courses">
+        <strong>{{course.date | date:'dd/MM/yyyy'}}:</strong> {{ course.name }}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="admin">
+<!--    todo: show all course registrations-->
+  </div>
+
+</div>
+
+<p *ngIf="!loggedIn">You are currently not logged in. Please first login on the home page to see your profile and your courses.</p>
