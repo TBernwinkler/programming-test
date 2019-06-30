@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RequestMapping("api/celum/course")
 @RestController
@@ -62,5 +63,19 @@ public class CourseController {
             courses.add(c.orElse(null));
         }
         return courses;
+    }
+
+    @GetMapping(path = "available/student={id}")
+    public List<Course> getAvailableCourses(@PathVariable("id") UUID id) {
+        List<Course> allCourses = this.courseService.getAllCourses();
+        List<Course> studentCourses = this.getCoursesByStudent(id);
+
+        // UGLY APPROACH DUE TO LACK OF TIME
+        for (Course studentCourse : studentCourses) {
+            allCourses = allCourses.stream().filter(c
+                    -> !c.getName().equals(studentCourse.getName())).collect(Collectors.toList());
+        }
+
+        return allCourses;
     }
 }

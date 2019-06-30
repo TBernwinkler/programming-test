@@ -33,4 +33,12 @@ export class DataService {
     return this.http.get('http://localhost:8080/api/celum/course/student=' + userId);
   }
 
+  getAvailableCourses(userId) {
+    return this.http.get('http://localhost:8080/api/celum/course/available/student=' + userId);
+  }
+
+  getLogs(email) {
+    return this.http.get('http://localhost:8080/api/celum/logs');
+  }
+
 }

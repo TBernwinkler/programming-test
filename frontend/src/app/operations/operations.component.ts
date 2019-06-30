@@ -11,6 +11,7 @@ export class OperationsComponent implements OnInit {
 
   h1Style: boolean = false;
   users: object;
+  logs: object;
 
   constructor(private data: DataService) { }
 
@@ -18,6 +19,11 @@ export class OperationsComponent implements OnInit {
     this.data.getFakeUsers().subscribe(data => {
       this.users = data;
       console.log(this.users);
+    });
+
+    this.data.getLogs('admin@celum.at').subscribe(data => {
+      this.logs = data;
+      console.log(this.logs);
     });
   }
 

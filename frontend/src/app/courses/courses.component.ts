@@ -14,9 +14,11 @@ export class CoursesComponent implements OnInit {
   admin = false;
   user: object;
   courses: object;
+  availableCourses: object;
 
   constructor(private data: DataService) { }
 
+  // CONSOLE LOGS ONLY FOR DEVELOPMENT
   ngOnInit() {
     this.data.getUserDetails(this.userId).subscribe(data => {
       this.user = data;
@@ -26,6 +28,11 @@ export class CoursesComponent implements OnInit {
     this.data.getUserCourses(this.userId).subscribe(data => {
       this.courses = data;
       console.log(this.courses);
+    });
+
+    this.data.getAvailableCourses(this.userId).subscribe(data => {
+      this.availableCourses = data;
+      console.log(this.availableCourses);
     });
   }
 
