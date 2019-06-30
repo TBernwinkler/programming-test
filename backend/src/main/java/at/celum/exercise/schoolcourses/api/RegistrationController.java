@@ -12,6 +12,7 @@ import java.util.UUID;
 
 @RequestMapping("api/celum/registration")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class RegistrationController {
 
     private final RegistrationService registrationService;

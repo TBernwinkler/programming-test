@@ -1,10 +1,8 @@
 package at.celum.exercise.schoolcourses.dao;
 
-import at.celum.exercise.schoolcourses.model.Course;
 import at.celum.exercise.schoolcourses.model.Registration;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public interface RegistrationDao {

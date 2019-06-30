@@ -14,12 +14,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository("reg-mongo")
-public class RegistrationMongoDbDao implements RegistrationDao {
+public class RegistrationDaoImpl implements RegistrationDao {
 
     private MongoOperations connector;
 
     @Autowired
-    public RegistrationMongoDbDao() {
+    public RegistrationDaoImpl() {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringMongoConfig.class);
         connector = (MongoOperations) ctx.getBean("mongoTemplate");
     }

@@ -13,12 +13,12 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository("student-mongo")
-public class StudentMongoDbDao implements StudentDao {
+public class StudentDaoImpl implements StudentDao {
 
     private MongoOperations connector;
 
     @Autowired
-    public StudentMongoDbDao() {
+    public StudentDaoImpl() {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringMongoConfig.class);
         connector = (MongoOperations) ctx.getBean("mongoTemplate");
     }

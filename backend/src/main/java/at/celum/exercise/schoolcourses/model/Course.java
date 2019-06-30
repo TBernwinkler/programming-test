@@ -5,7 +5,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
 import java.util.UUID;
 
 @Document(collection = "courses")
@@ -15,12 +14,11 @@ public class Course {
     private final String id;
     @NotBlank
     private final String name;
-    @NotBlank
-    private final Date date;
+    private final long date;
 
     public Course(@JsonProperty("id") String id,
                   @JsonProperty("name") String name,
-                  @JsonProperty("date") Date date) {
+                  @JsonProperty("date") long date) {
         this.id = id == null ? UUID.randomUUID().toString() : id;
         this.name = name;
         this.date = date;
@@ -34,7 +32,7 @@ public class Course {
         return name;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 }
